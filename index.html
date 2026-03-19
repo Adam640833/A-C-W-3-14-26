@@ -21,7 +21,7 @@ html { scroll-behavior:smooth; font-size:16px; }
 --surface2:   #111D30;
 --border:     rgba(14,165,233,0.12);
 --border2:    rgba(14,165,233,0.22);
---border3:    rgba(255,255,255,0.07);
+--border3:    rgba(255,255,255,0.08);
 --blue:       #0EA5E9;
 --blue-dim:   rgba(14,165,233,0.12);
 --blue-glow:  rgba(14,165,233,0.3);
@@ -31,8 +31,8 @@ html { scroll-behavior:smooth; font-size:16px; }
 --red:        #EF4444;
 --green:      #10B981;
 --text:       #F0F4F8;
---text2:      rgba(240,244,248,0.6);
---text3:      rgba(240,244,248,0.3);
+--text2:      rgba(240,244,248,0.7);
+--text3:      rgba(240,244,248,0.5);
 --font-display:'Barlow Condensed', sans-serif;
 --font-body:  'IBM Plex Sans', sans-serif;
 --font-mono:  'IBM Plex Mono', monospace;
@@ -63,17 +63,17 @@ NAV
 ═══════════════════════════════════════════════ */
 nav {
 position:fixed; top:0; left:0; right:0; z-index:1000;
-background:rgba(6,10,16,0.85);
+background:rgba(6,10,16,0.92);
 backdrop-filter:blur(20px);
 border-bottom:1px solid var(--border);
 }
 .nav-wrap {
 max-width:1400px; margin:0 auto;
-padding:0 2.5rem; height:64px;
+padding:0 1.5rem; height:64px;
 display:flex; align-items:center; justify-content:space-between;
 }
 .nav-logo { display:flex; align-items:center; gap:0.75rem; cursor:pointer; text-decoration:none; }
-.nav-logo img { height:36px; filter:drop-shadow(0 0 12px rgba(14,165,233,0.4)); }
+.nav-logo img { height:34px; filter:drop-shadow(0 0 10px rgba(14,165,233,0.4)); }
 .nav-logo-text {
 font-family:var(--font-display); font-weight:700; font-size:1.25rem;
 color:var(--text); letter-spacing:1px; text-transform:uppercase;
@@ -95,6 +95,37 @@ border:1px solid var(--blue)!important; border-radius:3px!important;
 cursor:pointer; transition:all 0.2s;
 }
 .nav-cta:hover { background:transparent!important; color:var(--blue)!important; box-shadow:0 0 20px var(--blue-glow)!important; }
+
+/* FIX #1: Hamburger + mobile menu */
+.hamburger {
+display:none; flex-direction:column; gap:5px; cursor:pointer;
+padding:8px; border:1px solid var(--border2); border-radius:4px;
+background:transparent;
+}
+.hamburger span { display:block; width:22px; height:2px; background:var(--blue); border-radius:1px; transition:all 0.3s; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+display:none; position:fixed; top:64px; left:0; right:0; z-index:999;
+background:rgba(6,10,16,0.98); backdrop-filter:blur(20px);
+border-bottom:1px solid var(--border2);
+flex-direction:column; padding:1rem 1.5rem 1.5rem;
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu span {
+font-family:var(--font-mono); font-size:0.85rem; color:var(--text2);
+padding:1rem 0; border-bottom:1px solid var(--border3);
+cursor:pointer; letter-spacing:0.5px; transition:color 0.2s;
+}
+.mobile-menu span:hover { color:var(--blue); }
+.mobile-menu span:last-child { border-bottom:none; }
+.mobile-menu .m-cta {
+margin-top:1rem; background:var(--blue); color:var(--bg);
+text-align:center; padding:1rem; border-radius:3px;
+font-weight:700; letter-spacing:1px; border-bottom:none !important;
+}
 
 /* SPA */
 .page { display:none; }
@@ -147,7 +178,8 @@ background:transparent; color:var(--text2); border:1px solid var(--border2);
 border-radius:3px; cursor:pointer; transition:all 0.22s; text-decoration:none;
 }
 .btn-ghost:hover { color:var(--text); border-color:rgba(240,244,248,0.3); }
-.btn-row { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+/* FIX #11: Button row — full width on mobile, inline on desktop */
+.btn-row { display:flex; gap:0.75rem; flex-direction:column; }
 
 /* ═══════════════════════════════════════════════
 HERO
@@ -208,8 +240,9 @@ letter-spacing:0.5px;
 .aud-pill:hover { color:var(--text); border-color:rgba(14,165,233,0.4); }
 .aud-pill.active { background: var(--blue); border-color:var(--blue); color:var(--bg); font-weight:600; }
 
-.hero-msg { display:none; animation:fadeUp 0.5s ease-out; }
-.hero-msg.active { display:block; }
+/* FIX #2: Hero message — always visible when active */
+.hero-msg { display:none; }
+.hero-msg.active { display:block !important; animation:fadeUp 0.5s ease-out; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
 .hero-h1 {
@@ -563,6 +596,7 @@ RESPONSIVE
 }
 @media(max-width:700px){
 nav .nav-links{display:none}
+.hamburger{display:flex}
 .form-grid{grid-template-columns:1fr}
 .section{padding:5rem 1.5rem}
 .hero{padding:80px 1.5rem 5rem}
@@ -570,6 +604,12 @@ nav .nav-links{display:none}
 .props-grid{grid-template-columns:1fr}
 .positioning-inner{flex-direction:column;gap:1rem}
 .pos-divider{display:none}
+}
+
+@media(min-width:701px){
+  .btn-row { flex-direction:row; }
+  .btn-primary, .btn-ghost { width:auto; }
+  .nav-wrap { padding:0 2.5rem; }
 }
 </style>
 
@@ -580,7 +620,7 @@ nav .nav-links{display:none}
 
 <nav>
   <div class="nav-wrap">
-    <a class="nav-logo" onclick="goTo('home')">
+    <a class="nav-logo" onclick="goTo('home');closeMobile()">
       <img src="assets/Animate_Logo_2026_White.png" alt="Animate Cyber">
       <span class="nav-logo-text">Animate <span>Cyber</span></span>
     </a>
@@ -592,8 +632,20 @@ nav .nav-links{display:none}
       <li><span onclick="goTo('impact')">Proven Impact</span></li>
       <li><span class="nav-cta" onclick="goTo('contact')">Get Started</span></li>
     </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <span onclick="goTo('home');closeMobile()">Home</span>
+  <span onclick="goTo('what');closeMobile()">What It Is</span>
+  <span onclick="goTo('how');closeMobile()">How It Works</span>
+  <span onclick="goTo('who');closeMobile()">Who It's For</span>
+  <span onclick="goTo('impact');closeMobile()">Proven Impact</span>
+  <span class="m-cta" onclick="goTo('contact');closeMobile()">Get Started →</span>
+</div>
 
 <!-- ══════════════════════════════════
      HOME PAGE
@@ -1121,6 +1173,30 @@ function goTo(id) {
   if (t) { t.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
 }
 
+// ── FIX #1: Mobile nav
+function toggleMobile() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  if (!menu || !btn) return;
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMobile() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  if (!menu || !btn) return;
+  menu.classList.remove('open');
+  btn.classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  if (!menu || !btn) return;
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+    closeMobile();
+  }
+});
+
 // ── Audience switcher
 let audTimer;
 function aud(a) {
@@ -1133,6 +1209,7 @@ function aud(a) {
 }
 const auds = ['ops','pm','ciso']; let ai = 0;
 function autoAud() { ai = (ai+1)%auds.length; aud(auds[ai]); }
+aud('ops');
 audTimer = setInterval(autoAud, 9000);
 
 // ── Architecture diagram animation
