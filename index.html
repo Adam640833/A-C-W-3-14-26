@@ -31,8 +31,8 @@ html { scroll-behavior:smooth; font-size:16px; }
 --red:        #EF4444;
 --green:      #10B981;
 --text:       #F0F4F8;
---text2:      rgba(240,244,248,0.82);
---text3:      rgba(240,244,248,0.64);
+--text2:      rgba(255,255,255,1);
+--text3:      rgba(255,255,255,1);
 --font-display:'Barlow Condensed', sans-serif;
 --font-body:  'IBM Plex Sans', sans-serif;
 --font-mono:  'IBM Plex Mono', monospace;
@@ -854,26 +854,26 @@ nav .nav-links{display:none}
       <div class="eyebrow">The Problem</div>
       <div class="problem-layout">
         <div>
-          <div class="problem-statement">Your environment is built.<em>Now what?</em></div>
-          <p class="body-lg" style="margin-bottom:0.5rem">Infrastructure provisioning is solved. Every platform handles spinning up environments. What nobody solved is populating that environment with realistic network activity.</p>
-          <p class="body-md">That's where the manual grind begins — and where most programs hit their cost ceiling.</p>
+          <div class="problem-statement">Infrastructure is easy. <em>Engineering the activity inside it is not.</em></div>
+          <p class="body-lg" style="margin-bottom:0.5rem">Infrastructure provisioning is solved. You can spin up environments in minutes. What hasn’t been solved is the time, cost, and engineering effort required to create and maintain network activity inside them.</p>
+          <p class="body-md">That’s where the real bottleneck begins—and where most programs hit their cost ceiling.</p>
 
       <div class="problem-items">
         <div class="prob-item">
           <div class="prob-icon r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
-          <div class="prob-text"><h4>The 10:1 Engineering Gap</h4><p>10 hours of manual coding for every 1 hour of active exercise. Every new scenario is a new engineering project. Nothing is reusable.</p></div>
+          <div class="prob-text"><h4>The 10:1 Engineering Gap</h4><p>10 hours of engineering for every 1 hour of execution. Every scenario becomes a custom build. Nothing is reusable.</p></div>
         </div>
         <div class="prob-item">
           <div class="prob-icon a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-          <div class="prob-text"><h4>Architecture-Locked Logic</h4><p>Behavior is hardcoded to specific machines. Change the network, the scripts break. Every environment rebuild starts from zero.</p></div>
+          <div class="prob-text"><h4>Architecture-Locked Logic</h4><p>Behavior is tied to individual machines. Change the environment → everything breaks → rebuild from scratch.</p></div>
         </div>
         <div class="prob-item">
           <div class="prob-icon b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <div class="prob-text"><h4>Sterile Environments</h4><p>Without realistic background traffic, there is no haystack. Anomalies are trivially obvious. Training produces false confidence. Validation means nothing.</p></div>
+          <div class="prob-text"><h4>Sterile Environments</h4><p>No background activity = no signal. Detection becomes trivial. Validation becomes meaningless.</p></div>
         </div>
         <div class="prob-item">
           <div class="prob-icon r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></div>
-          <div class="prob-text"><h4>Compounding Operational Debt</h4><p>Scripts leave orphaned files and altered states. Environments degrade into spaghetti logic. Cleanup costs as much as the build.</p></div>
+          <div class="prob-text"><h4>Compounding Operational Debt</h4><p>Scripts leave residue. Environments degrade. Cleanup costs rival the build itself.</p></div>
         </div>
       </div>
     </div>
@@ -881,16 +881,16 @@ nav .nav-links{display:none}
     <div>
       <div class="stat-feature">
         <div class="stat-big">10:1</div>
-        <h4>The Engineering Gap</h4>
-        <p>Every hour of active cyber exercise requires ten hours of manual engineering. This is the industry reality — and it makes scaling impossible without Animate.</p>
+        <h4>THE COST OF MANUAL ENGINEERING</h4>
+        <p>For every 1 hour of execution, you spend 10 hours engineering it. This isn’t a tooling problem—it’s a labor problem. And it makes scale economically impossible.</p>
         <div class="cost-grid">
           <div class="cost-cell"><div class="cost-val">$35k</div><div class="cost-lbl">Max maintenance cost per node per year</div></div>
           <div class="cost-cell"><div class="cost-val">$15k</div><div class="cost-lbl">Min maintenance cost per node per year</div></div>
         </div>
-        <div class="warn-bar">⚠ INDUSTRY BENCHMARK — Traditional Manual Workflow</div>
+        <div class="warn-bar">⚠ You’re not scaling environments. You’re scaling engineering hours.</div>
       </div>
       <div style="margin-top:1.5rem;padding:1.5rem;background: var(--surface);border:1px solid var(--border);border-radius:4px">
-        <p class="body-md">The industry mastered environment provisioning. What it never built was a standardized system for behavioral governance. Without a dedicated control plane, mission logic stays permanently tied to individual assets — and the rebuild cycle never ends.</p>
+        <p class="body-md">The industry solved infrastructure. It never solved behavior. Without a control plane for activity, logic stays tied to machines—and the rebuild cycle never ends.</p>
       </div>
     </div>
   </div>
