@@ -229,6 +229,33 @@ display:flex; align-items:center; gap:0.75rem; margin-bottom:2rem;
 @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(14,165,233,0.4)} 50%{opacity:0.7;box-shadow:0 0 0 6px rgba(14,165,233,0)} }
 .kicker-text { font-family:var(--font-mono); font-size:0.68rem; font-weight:500; color:var(--blue); letter-spacing:2.5px; text-transform:uppercase; }
 
+/* Stage-setting headline block */
+.hero-stage-title {
+font-family:var(--font-display);
+font-size:clamp(2rem,4.4vw,4.8rem);
+font-weight:800;
+line-height:0.9;
+letter-spacing:1px;
+text-transform:uppercase;
+color:var(--text);
+margin-bottom:0.7rem;
+}
+.hero-stage-title em {
+font-style:normal;
+color:var(--blue);
+}
+.hero-stage-sub {
+font-family:var(--font-mono);
+font-size:clamp(0.72rem,1.15vw,1.25rem);
+font-weight:600;
+letter-spacing:3px;
+text-transform:uppercase;
+color:var(--text);
+margin-bottom:2rem;
+}
+.hero-stage-sub .dot { opacity:0.4; margin:0 0.7rem; }
+.hero-stage-sub em { font-style:normal; color:var(--blue); }
+
 /* Audience switcher */
 .aud-pills { display:flex; gap:0.5rem; margin-bottom:2.5rem; flex-wrap:wrap; }
 .aud-pill {
@@ -662,6 +689,9 @@ nav .nav-links{display:none}
 
     <div class="hero-inner">
       <div>
+        <div class="hero-stage-title">Scale Without <em>Rebuilding</em></div>
+        <div class="hero-stage-sub">Define Once <span class="dot">·</span> <em>Execute Anywhere</em></div>
+
         <div class="aud-pills">
           <button class="aud-pill active" data-a="ops" onclick="aud('ops')">Range Operators</button>
           <button class="aud-pill" data-a="pm" onclick="aud('pm')">Program Managers</button>
@@ -714,7 +744,7 @@ nav .nav-links{display:none}
       <svg id="arch-svg" viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(14,165,233,0.6)"/>
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(14,165,233,0.9)"/>
           </marker>
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="blur"/>
@@ -723,56 +753,56 @@ nav .nav-links{display:none}
         </defs>
 
         <!-- Control Plane box -->
-        <rect x="120" y="20" width="200" height="70" rx="4" fill="rgba(14,165,233,0.08)" stroke="rgba(14,165,233,0.35)" stroke-width="1"/>
-        <text x="220" y="42" text-anchor="middle" fill="rgba(14,165,233,0.6)" font-family="IBM Plex Mono" font-size="8" letter-spacing="2">CONTROL PLANE</text>
+        <rect x="120" y="20" width="200" height="70" rx="4" fill="rgba(14,165,233,0.08)" stroke="rgba(14,165,233,0.62)" stroke-width="1"/>
+        <text x="220" y="42" text-anchor="middle" fill="rgba(14,165,233,0.9)" font-family="IBM Plex Mono" font-size="8" letter-spacing="2">CONTROL PLANE</text>
         <text x="220" y="60" text-anchor="middle" fill="#F0F4F8" font-family="IBM Plex Mono" font-size="9" font-weight="500">Scenario Studio</text>
         <text x="220" y="74" text-anchor="middle" fill="rgba(240,244,248,0.62)" font-family="IBM Plex Mono" font-size="7">Orchestration Engine</text>
 
         <!-- Boundary line -->
-        <line x1="30" y1="115" x2="410" y2="115" stroke="rgba(14,165,233,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
-        <text x="30" y="111" fill="rgba(14,165,233,0.35)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">INTENT</text>
-        <text x="30" y="130" fill="rgba(14,165,233,0.35)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">EXECUTION</text>
+        <line x1="30" y1="115" x2="410" y2="115" stroke="rgba(14,165,233,0.4)" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="30" y="111" fill="rgba(14,165,233,0.72)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">INTENT</text>
+        <text x="30" y="130" fill="rgba(14,165,233,0.72)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">EXECUTION</text>
 
         <!-- Connector lines from control plane -->
-        <line x1="160" y1="90" x2="80" y2="155" stroke="rgba(14,165,233,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
-        <line x1="220" y1="90" x2="220" y2="155" stroke="rgba(14,165,233,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
-        <line x1="280" y1="90" x2="360" y2="155" stroke="rgba(14,165,233,0.25)" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="160" y1="90" x2="80" y2="155" stroke="rgba(14,165,233,0.55)" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="220" y1="90" x2="220" y2="155" stroke="rgba(14,165,233,0.55)" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="280" y1="90" x2="360" y2="155" stroke="rgba(14,165,233,0.55)" stroke-width="1" stroke-dasharray="3,3"/>
 
         <!-- Animate Host nodes -->
-        <rect x="30" y="155" width="100" height="55" rx="4" fill="rgba(13,21,38,0.9)" stroke="rgba(14,165,233,0.3)" stroke-width="1" class="ahost" id="h1"/>
-        <text x="80" y="175" text-anchor="middle" fill="rgba(14,165,233,0.5)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">ANIMATE HOST</text>
+        <rect x="30" y="155" width="100" height="55" rx="4" fill="rgba(13,21,38,0.9)" stroke="rgba(14,165,233,0.62)" stroke-width="1" class="ahost" id="h1"/>
+        <text x="80" y="175" text-anchor="middle" fill="rgba(14,165,233,0.82)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">ANIMATE HOST</text>
         <text x="80" y="188" text-anchor="middle" fill="rgba(240,244,248,0.7)" font-family="IBM Plex Mono" font-size="8">node-01</text>
         <circle cx="80" cy="200" r="3" fill="#10B981" id="d1"/>
 
-        <rect x="170" y="155" width="100" height="55" rx="4" fill="rgba(13,21,38,0.9)" stroke="rgba(14,165,233,0.3)" stroke-width="1" class="ahost" id="h2"/>
-        <text x="220" y="175" text-anchor="middle" fill="rgba(14,165,233,0.5)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">ANIMATE HOST</text>
+        <rect x="170" y="155" width="100" height="55" rx="4" fill="rgba(13,21,38,0.9)" stroke="rgba(14,165,233,0.62)" stroke-width="1" class="ahost" id="h2"/>
+        <text x="220" y="175" text-anchor="middle" fill="rgba(14,165,233,0.82)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">ANIMATE HOST</text>
         <text x="220" y="188" text-anchor="middle" fill="rgba(240,244,248,0.7)" font-family="IBM Plex Mono" font-size="8">node-02</text>
         <circle cx="220" cy="200" r="3" fill="#10B981" id="d2"/>
 
-        <rect x="310" y="155" width="100" height="55" rx="4" fill="rgba(13,21,38,0.9)" stroke="rgba(14,165,233,0.3)" stroke-width="1" class="ahost" id="h3"/>
-        <text x="360" y="175" text-anchor="middle" fill="rgba(14,165,233,0.5)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">ANIMATE HOST</text>
+        <rect x="310" y="155" width="100" height="55" rx="4" fill="rgba(13,21,38,0.9)" stroke="rgba(14,165,233,0.62)" stroke-width="1" class="ahost" id="h3"/>
+        <text x="360" y="175" text-anchor="middle" fill="rgba(14,165,233,0.82)" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">ANIMATE HOST</text>
         <text x="360" y="188" text-anchor="middle" fill="rgba(240,244,248,0.7)" font-family="IBM Plex Mono" font-size="8">node-03</text>
         <circle cx="360" cy="200" r="3" fill="#10B981" id="d3"/>
 
         <!-- Protocol arrows down -->
-        <line x1="60" y1="210" x2="60" y2="255" stroke="rgba(14,165,233,0.2)" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="100" y1="210" x2="100" y2="255" stroke="rgba(14,165,233,0.2)" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="200" y1="210" x2="200" y2="255" stroke="rgba(14,165,233,0.2)" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="240" y1="210" x2="240" y2="255" stroke="rgba(14,165,233,0.2)" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="340" y1="210" x2="340" y2="255" stroke="rgba(14,165,233,0.2)" stroke-width="1" marker-end="url(#arr)"/>
-        <line x1="380" y1="210" x2="380" y2="255" stroke="rgba(14,165,233,0.2)" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="60" y1="210" x2="60" y2="255" stroke="rgba(14,165,233,0.52)" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="100" y1="210" x2="100" y2="255" stroke="rgba(14,165,233,0.52)" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="200" y1="210" x2="200" y2="255" stroke="rgba(14,165,233,0.52)" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="240" y1="210" x2="240" y2="255" stroke="rgba(14,165,233,0.52)" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="340" y1="210" x2="340" y2="255" stroke="rgba(14,165,233,0.52)" stroke-width="1" marker-end="url(#arr)"/>
+        <line x1="380" y1="210" x2="380" y2="255" stroke="rgba(14,165,233,0.52)" stroke-width="1" marker-end="url(#arr)"/>
 
         <!-- Protocol labels -->
-        <text x="60" y="270" text-anchor="middle" fill="rgba(14,165,233,0.5)" font-family="IBM Plex Mono" font-size="7">SMB</text>
-        <text x="100" y="270" text-anchor="middle" fill="rgba(14,165,233,0.5)" font-family="IBM Plex Mono" font-size="7">HTTP</text>
-        <text x="200" y="270" text-anchor="middle" fill="rgba(14,165,233,0.5)" font-family="IBM Plex Mono" font-size="7">DNS</text>
-        <text x="240" y="270" text-anchor="middle" fill="rgba(14,165,233,0.5)" font-family="IBM Plex Mono" font-size="7">SSH</text>
-        <text x="340" y="270" text-anchor="middle" fill="rgba(14,165,233,0.5)" font-family="IBM Plex Mono" font-size="7">SMB</text>
-        <text x="380" y="270" text-anchor="middle" fill="rgba(14,165,233,0.5)" font-family="IBM Plex Mono" font-size="7">HTTP</text>
+        <text x="60" y="270" text-anchor="middle" fill="rgba(14,165,233,0.82)" font-family="IBM Plex Mono" font-size="7">SMB</text>
+        <text x="100" y="270" text-anchor="middle" fill="rgba(14,165,233,0.82)" font-family="IBM Plex Mono" font-size="7">HTTP</text>
+        <text x="200" y="270" text-anchor="middle" fill="rgba(14,165,233,0.82)" font-family="IBM Plex Mono" font-size="7">DNS</text>
+        <text x="240" y="270" text-anchor="middle" fill="rgba(14,165,233,0.82)" font-family="IBM Plex Mono" font-size="7">SSH</text>
+        <text x="340" y="270" text-anchor="middle" fill="rgba(14,165,233,0.82)" font-family="IBM Plex Mono" font-size="7">SMB</text>
+        <text x="380" y="270" text-anchor="middle" fill="rgba(14,165,233,0.82)" font-family="IBM Plex Mono" font-size="7">HTTP</text>
 
         <!-- Environment label -->
-        <rect x="20" y="278" width="400" height="16" rx="2" fill="rgba(14,165,233,0.04)" stroke="rgba(14,165,233,0.1)" stroke-width="1"/>
-        <text x="220" y="290" text-anchor="middle" fill="rgba(14,165,233,0.3)" font-family="IBM Plex Mono" font-size="7" letter-spacing="2">TARGET ENVIRONMENT — ZERO FOOTPRINT</text>
+        <rect x="20" y="278" width="400" height="16" rx="2" fill="rgba(14,165,233,0.12)" stroke="rgba(14,165,233,0.45)" stroke-width="1"/>
+        <text x="220" y="290" text-anchor="middle" fill="rgba(14,165,233,0.72)" font-family="IBM Plex Mono" font-size="7" letter-spacing="2">TARGET ENVIRONMENT — ZERO FOOTPRINT</text>
 
         <!-- Animated data packets -->
         <circle id="pkt1" r="3" fill="rgba(14,165,233,0.8)" filter="url(#glow)"/>
