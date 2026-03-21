@@ -235,12 +235,30 @@ box-sizing:border-box;
 display:grid;
 grid-template-columns:1fr min(520px,100%);
 gap:clamp(2rem,4vw,5rem);
-align-items:center;
+align-items:stretch;
 width:100%;
 min-width:0;
+--hero-pair-min:clamp(27rem,46vh,34rem);
 }
-.hero-copy { min-width:0; }
-.hero-diagram { min-width:0; }
+.hero-copy {
+min-width:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:clamp(0.75rem,1.5vw,1.4rem);
+min-height:var(--hero-pair-min);
+}
+.hero-diagram {
+min-width:0;
+display:flex;
+align-items:stretch;
+}
+.hero-diagram .arch-diagram {
+width:100%;
+min-height:var(--hero-pair-min);
+display:flex;
+flex-direction:column;
+}
 
 .hero-kicker {
 display:flex; align-items:center; gap:0.75rem; margin-bottom:2rem;
@@ -285,11 +303,17 @@ text-wrap:balance;
 
 /* Audience switcher */
 .aud-pills { display:flex; gap:0.5rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+.hero-copy .aud-pills { margin-bottom:0; gap:0.55rem; }
 .aud-pill {
 font-family:var(--font-mono); font-size:0.68rem; font-weight:500;
 padding:0.35rem 1rem; border-radius:2px; border:1px solid var(--border2);
 color:var(--text2); cursor:pointer; transition:all 0.2s; background:transparent;
 letter-spacing:0.5px;
+}
+.hero-copy .aud-pill {
+font-size:clamp(0.72rem,0.42vw + 0.62rem,0.92rem);
+padding:0.5rem 1.2rem;
+letter-spacing:0.55px;
 }
 .aud-pill:hover { color:var(--text); border-color:rgba(14,165,233,0.4); }
 .aud-pill.active { background: var(--blue); border-color:var(--blue); color:var(--bg); font-weight:600; }
@@ -301,12 +325,26 @@ letter-spacing:0.5px;
 
 .hero-h1 {
 font-family:var(--font-display); font-weight:800; text-transform:uppercase;
-font-size:clamp(1.65rem,2.8vw + 0.85rem,4.75rem); line-height:0.92; letter-spacing:clamp(0.5px,0.15vw,1px);
-margin-bottom:1.75rem;
+font-size:clamp(2.35rem,3.5vw + 1.05rem,4.35rem);
+line-height:0.93;
+letter-spacing:-0.03em;
+margin-bottom:clamp(1rem,2vw,1.5rem);
 }
 .hero-h1 em { font-style:normal; color:var(--blue); display:block; text-shadow:0 0 40px rgba(14,165,233,0.3); }
 
-.hero-sub { font-size:1.1rem; font-weight:300; color:var(--text2); max-width:560px; line-height:1.75; margin-bottom:2.5rem; }
+.hero-sub {
+font-size:clamp(1.08rem,0.95vw + 0.78rem,1.38rem);
+font-weight:300;
+color:var(--text2);
+max-width:min(38rem,100%);
+line-height:1.68;
+margin-bottom:clamp(1.25rem,2.2vw,2rem);
+}
+.hero-copy .btn-primary,
+.hero-copy .btn-ghost {
+font-size:clamp(0.78rem,0.4vw + 0.65rem,0.9rem);
+padding:clamp(0.95rem,1.2vw,1.15rem) clamp(2rem,2.5vw,2.5rem);
+}
 
 /* Manifesto line */
 .manifesto {
@@ -333,11 +371,23 @@ padding:0.9rem 1.25rem; border-bottom:1px solid var(--border);
 display:flex; align-items:center; gap:0.5rem;
 }
 .arch-dot { width:8px; height:8px; border-radius:50%; }
-.arch-title { font-family:var(--font-mono); font-size:0.62rem; color:var(--text3); letter-spacing:1px; margin-left:auto; }
-.arch-body { padding:1.5rem; }
+.arch-title { font-family:var(--font-mono); font-size:clamp(0.62rem,0.35vw + 0.52rem,0.72rem); color:var(--text3); letter-spacing:1px; margin-left:auto; }
+.arch-body {
+padding:clamp(1rem,2vw,1.5rem) 1.5rem;
+flex:1 1 auto;
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:0;
+}
 
 /* SVG diagram */
-#arch-svg { width:100%; height:320px; }
+#arch-svg {
+width:100%;
+height:auto;
+max-height:min(380px,52vh);
+aspect-ratio:440 / 300;
+}
 
 /* Status bar */
 .arch-status {
@@ -345,7 +395,7 @@ padding:0.75rem 1.25rem; border-top:1px solid var(--border);
 display:flex; align-items:center; gap:0.75rem;
 }
 .status-dot { width:6px; height:6px; border-radius:50%; background: var(--green); animation:pulse 1.5s infinite; }
-.status-text { font-family:var(--font-mono); font-size:0.62rem; color:var(--text3); letter-spacing:0.5px; }
+.status-text { font-family:var(--font-mono); font-size:clamp(0.62rem,0.35vw + 0.52rem,0.74rem); color:var(--text2); letter-spacing:0.5px; }
 
 /* ═══════════════════════════════════════════════
 POSITIONING STATEMENT
@@ -644,7 +694,8 @@ footer { background: var(--bg3); border-top:1px solid var(--border); padding:3re
 RESPONSIVE
 ═══════════════════════════════════════════════ */
 @media(max-width:1100px){
-.hero-main-row{grid-template-columns:1fr;gap:2rem}
+.hero-main-row{grid-template-columns:1fr;gap:2rem;align-items:start}
+.hero-copy{min-height:0}
 .hero-diagram{display:none}
 }
 @media(max-width:900px){
